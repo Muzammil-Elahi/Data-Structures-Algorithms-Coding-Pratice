@@ -1,0 +1,12 @@
+def reverse_string(string): # to be fair this si done not using a stack but can be done easily by adding the string to a stack and popping it all off to reverse the string
+    tmp = list(string)
+    n = len(tmp)
+    ans = ""
+    i = n - 1
+    while tmp is not None and i >= 0:
+        ans+=tmp[i]
+        i-=1
+    return ans
+
+ans = reverse_string("We will conquere COVID-19")    
+print(ans)
