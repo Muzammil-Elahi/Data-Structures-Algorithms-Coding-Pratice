@@ -1,0 +1,20 @@
+# problem: https://leetcode.com/problems/reverse-integer/
+
+class Solution: # can clean up code in the ifs and returns
+    def reverse(self, x: int) -> int:
+        tmp = str(x)
+        if tmp[0] == "-":
+            ans = "-"
+            n = len(tmp)
+            for i in range(n-1,0,-1):
+                ans+=tmp[i]
+        else:
+            ans = ""
+            n = len(tmp)
+            for i in range(n-1,-1,-1):
+                ans+=tmp[i]
+        
+        if int(ans) < -2**31 or int(ans)> 2**31:
+            return 0
+        else:
+            return int(ans)
