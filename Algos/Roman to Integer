@@ -1,0 +1,62 @@
+# https://leetcode.com/problems/roman-to-integer/
+#NOTE: Can be done better without lots of if statements
+
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        ans = 0
+        iv = "IV"
+        ix = "IX"
+        xl = "XL"
+        xc = "XC"
+        cd = "CD"
+        cm = "CM"
+        #tmp = [iv,ix,xl,xc,cd,cm])
+        while iv in s or ix in s or xl in s or xc in s or cd in s or cm in s:
+            if iv in s:
+                count = s.count(iv)
+                tmp = count*4
+                ans+=tmp
+                s = s.replace(iv,"")
+            if ix in s:
+                count = s.count(ix)
+                tmp = count*9
+                ans+=tmp
+                s = s.replace(ix,"")
+            if xl in s:
+                count = s.count(xl)
+                tmp = count*40
+                ans+=tmp
+                s = s.replace(xl,"")
+            if xc in s:
+                count = s.count(xc)
+                tmp = count*90
+                ans+=tmp
+                s = s.replace(xc,"")
+            if cd in s:
+                count = s.count(cd)
+                tmp = count*400
+                ans+=tmp
+                s = s.replace(cd,"")
+            if cm in s:
+                count = s.count(cm)
+                tmp = count*900
+                ans+=tmp
+                s = s.replace(cm,"")
+    
+        for i in range(len(s)):
+            if s[i] == "I":
+                ans+=1
+            elif s[i] == "V":
+                ans+= 5
+            elif s[i] == "X":
+                ans+=10
+            elif s[i] == "L":
+                ans+=50
+            elif s[i] == "C":
+                ans+=100
+            elif s[i] =="D":
+                ans+=500
+            elif s[i] == "M":
+                ans+=1000
+            
+        return ans
