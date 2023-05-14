@@ -1,0 +1,23 @@
+# https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string
+# NOTE: may be possible to reduce if statments maybe use data structure to help
+
+
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        if needle not in haystack: # if needle is not in the string
+            return -1
+        elif len(haystack) == len(needle) and haystack == needle: # if they are the same size and not the same string
+            return 0
+
+        n = len(haystack)
+        m = len(needle)
+        if m == 1: # if the needle has a length of 1 just traverse as normal
+            for i in range(n):
+                if haystack[i] == needle:
+                    return i
+        else:
+            for i in range(n-m+1):
+                print(haystack[i:i+m])
+                print(needle)
+                if haystack[i:i+m] == needle:
+                    return i
