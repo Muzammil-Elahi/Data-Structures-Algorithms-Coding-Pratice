@@ -1,0 +1,13 @@
+# https://leetcode.com/problems/missing-number
+#NOTE: possilbe can be more efficent right now this is n log n + n
+
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        n = len(nums)
+        nums.sort()
+        count = 0
+        for i in range(n):
+            if nums[i] != count:
+                return count
+            count+=1
+        return count
