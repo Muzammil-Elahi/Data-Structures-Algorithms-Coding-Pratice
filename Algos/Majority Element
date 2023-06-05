@@ -1,0 +1,19 @@
+#https://leetcode.com/problems/majority-element
+#NOTE: can be done in O(N) time but commeted out code for a lienar loop takes too long so there must be another approach
+
+import math
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        ans = 0
+        n = len(nums)
+        if n == 1:
+            return nums[0]
+        nums.sort()
+        return nums[math.ceil(n/2)-1]
+        """
+        for i in range(n):
+            total = nums.count(nums[i])
+            if total >= math.ceil(n/2):
+                ans = nums[i]
+        return ans
+        """
