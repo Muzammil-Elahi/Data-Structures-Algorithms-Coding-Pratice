@@ -1,0 +1,8 @@
+# https://leetcode.com/problems/length-of-last-word/submissions/
+
+# beats 99% on run time but only 20% on memeory
+
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        x = s.strip().split()
+        return len(x[-1])
