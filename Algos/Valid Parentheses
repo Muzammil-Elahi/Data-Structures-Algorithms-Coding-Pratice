@@ -1,0 +1,15 @@
+# https://leetcode.com/problems/valid-parentheses
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        dic =  {")": "(", "]": "[", "}": "{"}
+        stack = []
+        for char in s:
+            if char in dic:
+                if stack and stack[-1] == dic[char]: # stack is not empty and current close bracket matches most recent open bracket
+                    stack.pop()
+                else:
+                    return False
+            else:
+                stack.append(char)
+        return not stack # stack is empty if valid return true
