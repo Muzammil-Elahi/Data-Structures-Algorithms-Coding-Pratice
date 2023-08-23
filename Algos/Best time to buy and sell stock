@@ -1,0 +1,20 @@
+# https://leetcode.com/problems/best-time-to-buy-and-sell-stock
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        """
+        answer is initialzied to 0
+        want max profit so lowest price minus highest price in that order
+        set lowest to first price and update if current price is loqer then set lowest
+        our answer of max profit is the max of our current answer and the current profit (price - lowest)
+        all done in a for loop and return answer
+        """
+        ans = 0
+        low = prices[0]
+
+        for price in prices:
+            ans = max(ans, price - low)
+            if price < low:
+                low = price
+        return ans
+
