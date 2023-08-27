@@ -1,0 +1,25 @@
+# https://leetcode.com/problems/longest-repeating-character-replacement/
+
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        """
+        have a default dic of int with intial values of 0
+        have left pointer and the right pointer is in the for loop
+        increase the count of each char at the right pointer
+        if the current sliding window is valid then update ans
+        else update left pointer and decrease count at previous left pointer
+        """
+        tmp = defaultdict(int)
+        left = 0
+        ans = 0
+
+        for right in range(len(s)):
+            tmp[s[right]]+=1 # increase count of char at right pointer
+
+            if (right - left + 1) - max(tmp.values()) <=k: # if window size - max freq of a char is valid i.e <= k replacements
+                ans = max(ans,right - left + 1) # update answer based to max of itself or valid widnow size
+            else:
+                tmp[s[left]] -=1 # decrease freq of chat at left pointer and increment left pointer
+                left+=1
+
+        return ans
