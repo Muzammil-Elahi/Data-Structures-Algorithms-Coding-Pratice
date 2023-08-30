@@ -1,0 +1,20 @@
+# https://leetcode.com/problems/find-minimum-in-rotated-sorted-array
+
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        """
+        starts as any binary search
+        since array is sorted left sub array will always be sorted in acending order
+        check if mid is greater then num at right which means mid is apart of the sorted left sub array 
+        left now becomes mid + 1 
+        """
+        l, r = 0, len(nums) - 1
+
+        while l < r:
+            mid = (l+r) // 2
+            if nums[mid] > nums[r]: 
+                # number at mid is greater then num at the right meaning mid is in the left sorted array since this is a rotated sorrted array
+                l = mid + 1
+            else:
+                r = mid
+        return nums[l]
